@@ -1,12 +1,13 @@
-from api.pages.home import HomePage
 from fasthtml.common import serve
+
 from .factory import app, rt
+from .layout import Layout
+from .pages.counter import Counter
+from .pages.home import Home
 
-
-__all__ = ("app",)
-
-
-rt("/")(HomePage)
+rt("/")(Layout)
+app.mount("/home", Home)
+app.mount("/counter", Counter)
 
 
 if __name__ == "__main__":
